@@ -32,26 +32,26 @@ class time:
 async def help(ctx, command=''):
     if command == '':
         embed = discord.Embed(title=f"명령어 목록", color=0xf3bb76)
-        embed.add_field(name=f"!도움,!도움말,!help",
+        embed.add_field(name=f"&도움,&도움말,&help",
                         value=f"지금 이거 ㅇㅇ", inline=False)
-        embed.add_field(name=f"!설정,!setting",
+        embed.add_field(name=f"&설정,&setting",
                         value=f"집 가는 시간 설정", inline=False)
-        embed.add_field(name=f"!집,!wlq,!zip,!시간",
+        embed.add_field(name=f"&집,&wlq,&zip,&시간",
                         value=f"집 가기까지 남은 시간 보기", inline=False)
-        embed.add_field(name=f"!수능,!tnsmd",
+        embed.add_field(name=f"&수능,&tnsmd",
                         value=f"수능까지 남은 시간 보기", inline=False)
-        embed.add_field(name=f"!도움 [명령]", value=f"명령에 대한 도움", inline=False)
+        embed.add_field(name=f"&도움 [명령]", value=f"명령에 대한 도움", inline=False)
     elif command == '설정':
         embed = discord.Embed(color=0xf3bb76)
-        embed.add_field(name=f"!설정 [연 월 일 (시 분 초)]",
+        embed.add_field(name=f"&설정 [연 월 일 (시 분 초)]",
                         value=f"집 가는 기본 시간을 설정합니다", inline=False)
     elif command == '집':
         embed = discord.Embed(color=0xf3bb76)
-        embed.add_field(name=f"!집 ([연 월 일 (시 분 초)])",
+        embed.add_field(name=f"&집 ([연 월 일 (시 분 초)])",
                         value=f"집 가기까지 남은 시간을 보여줍니다", inline=False)
     elif command == '수능':
         embed = discord.Embed(color=0xf3bb76)
-        embed.add_field(name=f"!수능",
+        embed.add_field(name=f"&수능",
                         value=f"우리의 수능날인 2022년 11월 17일까지 남은 시간을 보여줍니다", inline=False)
     else:
         return await ctx.send("잘못된 입력입니다")
