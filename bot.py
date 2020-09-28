@@ -3,6 +3,7 @@ import discord
 from discord.ext import commands
 import os
 import datetime
+import pytz
 
 
 client = discord.Client()
@@ -93,7 +94,7 @@ async def wlq(ctx, year='0', month='0', day='0', hour='0', minu='0', sec='0'):
     if not (year or month or day or hour or minu or sec):
         global time
         year, month, day, hour, minu, sec = time.year, time.month, time.day, time.hour, time.minu, time.sec
-    now = datetime.datetime.now()
+    now = datetime.datetime.now(pytz.timezone('Asia/Seoul'))
     try:
         dday = datetime.datetime(year, month, day, hour, minu, sec)
         left_time = dday - now
@@ -106,7 +107,7 @@ async def wlq(ctx, year='0', month='0', day='0', hour='0', minu='0', sec='0'):
 @bot.command(aliases=['수능'])
 async def tnsmd(ctx):
     dday = datetime.datetime(2022, 11, 17)
-    now = datetime.datetime.now()
+    now = datetime.datetime.now(pytz.timezone('Asia/Seoul'))
     left_time = dday - now
     result = f"{left_time.days}일\n{int(left_time.total_seconds()//3600)}시간\n{int(left_time.total_seconds()//60)}분\n{left_time.total_seconds()}초"
     return await ctx.send(result)
