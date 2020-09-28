@@ -71,7 +71,7 @@ async def setting(ctx, year='0', month='0', day='0', hour='0', minu='0', sec='0'
     sec = int(sec)
     try:
         if year or month or day or hour or minu or sec:
-            check = datetime.datetime(year, month, day, hour, minu, sec)
+            check = datetime.datetime(year, month, day, hour, minu, sec, tzinfo=pytz.timezone('Asia/Seoul'))
             global time
             time.year, time.month, time.day, time.hour, time.minu, time.sec = year, month, day, hour, minu, sec
             return await ctx.send("기본 시간이 성공적으로 변경되었습니다")
@@ -96,7 +96,7 @@ async def wlq(ctx, year='0', month='0', day='0', hour='0', minu='0', sec='0'):
         year, month, day, hour, minu, sec = time.year, time.month, time.day, time.hour, time.minu, time.sec
     now = datetime.datetime.now(pytz.timezone('Asia/Seoul'))
     try:
-        dday = datetime.datetime(year, month, day, hour, minu, sec)
+        dday = datetime.datetime(year, month, day, hour, minu, sec, tzinfo=pytz.timezone('Asia/Seoul'))
         left_time = dday - now
         result = f"{left_time.days}일\n{int(left_time.total_seconds()//3600)}시간\n{int(left_time.total_seconds()//60)}분\n{left_time.total_seconds()}초"
         return await ctx.send(result)
@@ -106,7 +106,7 @@ async def wlq(ctx, year='0', month='0', day='0', hour='0', minu='0', sec='0'):
 
 @bot.command(aliases=['수능'])
 async def tnsmd(ctx):
-    dday = datetime.datetime(2022, 11, 17)
+    dday = datetime.datetime(2022, 11, 17, tzinfo=pytz.timezone('Asia/Seoul'))
     now = datetime.datetime.now(pytz.timezone('Asia/Seoul'))
     left_time = dday - now
     result = f"{left_time.days}일\n{int(left_time.total_seconds()//3600)}시간\n{int(left_time.total_seconds()//60)}분\n{left_time.total_seconds()}초"
